@@ -1,49 +1,49 @@
-document.addEventListener("DOMContentLoaded", displayNotes);
+document.addEventListener('DOMContentLoaded', () => {
+  const noteTitleInput = document.getElementById('noteTitle');
+  const noteContentTextarea = document.getElementById('noteContent');
+  const saveBtn = document.getElementById('saveBtn');
+  const noteList = document.getElementById('noteList');
+  
+  let notes = JSON.parse(localStorage.getItem('notes')) || {};
+  let currentNoteId = null;
 
-// Save the note in localStorage
-function saveNote() {
-  const noteText = document.getElementById("noteInput").value;
-  if (noteText.trim() === "") {
-    alert("Please write something before saving!");
-    return;
+  // Load notes into the sidebar
+  function loadNotes() {
+      noteList.innerHTML = '';
+      Object.keys(notes).forEach(id => {
+          const li = document.createElement('li');
+          li.textContent = notes[id].title || 'Untitled Note';
+          li.dataset.id = id;
+          li.addEventListener('click', () => loadNoteContent(id));
+          noteList.appendChild(li);
+      });
   }
 
-  const notes = getNotesFromStorage();
-  notes.push(noteText);
-  localStorage.setItem("notes", JSON.stringify(notes));
-  displayNotes();
-  document.getElementById("noteInput").value = ""; // Clear the input field
-}
-
-// Retrieve notes from localStorage
-function getNotesFromStorage() {
-  const notes = localStorage.getItem("notes");
-  return notes ? JSON.parse(notes) : [];
-}
-
-// Display notes
-function displayNotes() {
-  const notesList = document.getElementById("notesList");
-  notesList.innerHTML = ""; // Clear existing notes
-
-  const notes = getNotesFromStorage();
-  if (notes.length === 0) {
-    notesList.innerHTML = "<p>No notes yet. Start by adding one!</p>";
-    return;
+  // Load content of a note into the main area
+  function loadNoteContent(id) {
+      currentNoteId = id;
+      const note = notes[id] || { title: '', content: '' };
+      noteTitleInput.value = note.title;
+      noteContentTextarea.value = note.content;
   }
 
-  notes.forEach((note, index) => {
-    const noteElement = document.createElement("div");
-    noteElement.classList.add("note");
-    noteElement.innerHTML = `<p>${note}</p><button onclick="deleteNote(${index})">Delete</button>`;
-    notesList.appendChild(noteElement);
+  // Save the note
+  saveBtn.addEventListener('click', () => {
+      const title = noteTitleInput.value.trim();
+      const content = noteContentTextarea.value.trim();
+      if (currentNoteId) {
+          notes[currentNoteId] = { title, content };
+      } else {
+          currentNoteId = Date.now().toString();
+          notes[currentNoteId] = { title, content };
+      }
+      localStorage.setItem('notes', JSON.stringify(notes));
+      loadNotes();
+      noteTitleInput.value = '';
+      noteContentTextarea.value = '';
+      currentNoteId = null;
   });
-}
 
-// Delete a specific note
-function deleteNote(index) {
-  const notes = getNotesFromStorage();
-  notes.splice(index, 1);
-  localStorage.setItem("notes", JSON.stringify(notes));
-  displayNotes();
-}
+  // Initialize the app
+  loadNotes();
+});
