@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note-Taking App</title>
+    <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>EasyNotes</h2>
+            <input type="text" id="searchNotes" placeholder="Search Notes...">
+            <ul id="noteList">
+                <!-- Note titles will be dynamically added here -->
+            </ul>
+        </aside>
+        <main class="main-content">
+            <div class="note-header">
+                <input type="text" id="noteTitle" placeholder="Note Title">
+                <div>
+                    <button id="newBtn">New Note</button>
+                    <button id="saveBtn">Save</button>
+                    <button id="deleteBtn">Delete</button>
+                    <button id="toggleThemeBtn">Dark Mode</button>
+                </div>
+            </div>
+            <div class="toolbar">
+                <button id="boldBtn" title="Bold" onclick="document.getElementById('noteContent').style.fontWeight='500';">B</button>
+                <button id="italicBtn" title="Italic">I</button>
+                <button id="underlineBtn" title="Underline">U</button>
+                <select id="fontSize" title="Font Size">
+                    <option value="1">Small</option>
+                    <option value="2">Normal</option>
+                    <option value="3">Large</option>
+                    <option value="4">Extra Large</option>
+                </select>
+                <input type="color" id="fontColor" title="Font Color">
+            </div>
+            <textarea id="noteContent" placeholder="Type your note..."></textarea>
+        </main>
+    </div>
+    <script src="script1.js"></script>
+</body>
+</html>
