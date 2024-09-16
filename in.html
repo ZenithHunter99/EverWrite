@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Note-Taking App</title>
     <link rel="stylesheet" href="styles1.css">
+    <link rel="icon" href="https://cdn2.iconfinder.com/data/icons/custom-ios-14-1/60/Notes-256.png">
 </head>
 <body>
     <div class="container">
@@ -22,13 +23,13 @@
                     <button id="newBtn">New Note</button>
                     <button id="saveBtn">Save</button>
                     <button id="deleteBtn">Delete</button>
-                    <button id="toggleThemeBtn">Dark Mode</button>
+                    <button id="toggleThemeBtn">Change Mode</button>
                 </div>
             </div>
             <div class="toolbar">
-                <button id="boldBtn" title="Bold" onclick="document.getElementById('noteContent').style.fontWeight='500';">B</button>
-                <button id="italicBtn" title="Italic">I</button>
-                <button id="underlineBtn" title="Underline">U</button>
+                <button id="boldBtn" title="Bold"><b>B</b></button>
+                <button id="italicBtn" title="Italic"><i>I</i></button>
+                <button id="underlineBtn" title="Underline"><u>U</u></button>
                 <select id="fontSize" title="Font Size">
                     <option value="1">Small</option>
                     <option value="2">Normal</option>
@@ -37,7 +38,7 @@
                 </select>
                 <input type="color" id="fontColor" title="Font Color">
             </div>
-            <textarea id="noteContent" placeholder="Type your note..."></textarea>
+            <div contenteditable="true" id="noteContent" class="note-content" placeholder="Type your note..."></div>
         </main>
     </div>
     <script src="script1.js"></script>

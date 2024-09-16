@@ -1,0 +1,334 @@
+/* General body settings */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.sidebar.dark-mode {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.main-content.dark-mode {
+  background: rgba(0, 0, 0, 0.5);
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+              url('https://imgs.search.brave.com/j0qS36sHA_7ndes9njI2_E2Ng1ZMlRFTs9XRQbEeWbw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXZlLmNv/bS93cC9DOWNFQ2oz/LmpwZw');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Container settings */
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* Sidebar styles */
+.sidebar {
+  width: 250px;
+  background:transparent;
+  backdrop-filter: blur(5px);
+  color: #ECF0F1;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  border-right: 5px solid rgba(255,255,255,0.4);
+}
+
+.sidebar h2 {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 30px;
+  margin-top: 0;
+}
+
+/* Search input style */
+#searchNotes {
+  width: 180px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 4px solid #ffffff;
+  border-radius: 4px;
+  outline: none;
+  transition: border 0.2s ease-out;
+  font-size: 16px;
+}
+#searchNotes:hover{
+  border: 4px solid #16A085;
+  transition: border 0.2 ease-in;
+}
+#searchNotes::placeholder{
+  font-size: 16px;
+}
+
+/* Note list settings */
+#noteList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#noteList li {
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #34495E;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 15px;
+  transition: background-color 0.3s, font-size 0.25s;
+  color: #ECF0F1;
+  text-align: left;
+}
+
+#noteList li:hover {
+  background-color: #1ABC9C;
+  font-size: 16px;
+}
+
+h2{
+  color: #ffffff;
+  transition: color 0.1s ease-out;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+h2:hover{
+  color: #16A085;
+  transition: color 0.1s ease-in;
+  
+}
+/* Main content area */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background:transparent;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transition: background-color 0.3s;
+}
+
+/* Note header section */
+.note-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+#deleteBtn:hover{
+  background-color: #c63b3b;
+}
+
+#noteTitle {
+  width: 60%;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding: 10px;
+  border: 3px solid rgba(255,255,255,0.4);
+  background: transparent;
+  backdrop-filter: blur(10px);
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+  outline: none;
+  color: white;
+  font-weight: 600;
+  transition: border 0.3s ease-out;
+}
+#noteTitle::placeholder{
+  color:rgb(208, 208, 208);
+  font-weight: 600;
+}
+#noteTitle:hover{
+  border: 3px solid #16A085;
+  transition: border 0.3s ease-in;
+}
+
+/* Buttons styling */
+button {
+  padding: 10px 15px;
+  background-color: #34495E;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background-color 0.3s, opacity 0.3s;
+  font-weight: 300;
+
+}
+
+button:hover {
+  background-color: #16A085;
+}
+
+/* Toolbar styles */
+.toolbar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  /* border-bottom: 1px solid #ddd; */
+  padding-bottom: 10px;
+}
+
+.toolbar button {
+  padding: 10px;
+  margin-right: 5px;
+  background-color: #34495E;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, opacity 0.3s;
+}
+.toolbar button:hover{
+  background-color:#1ABC9C;
+}
+
+.toolbar button.active {
+  background-color: #ffffff;
+}
+
+.toolbar select,
+.toolbar input[type="color"] {
+  margin-left: 10px;
+  border: 2px solid white;
+}
+
+
+/* Textarea settings */
+#noteContent {
+  width: 100%;
+  height: calc(100vh - 220px);
+  border: 3px solid rgba(255,255,255,0.4);
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+  margin-top: 10px;
+  resize: none;
+  box-sizing: border-box;
+  background:transparent;
+  backdrop-filter: blur(10px);
+  outline: none;
+  color: #ffffff;
+  transition: border 0.2s ease-out;
+}
+#noteContent::placeholder{
+  color: white;
+
+}
+#noteContent:hover{
+  border: 3px solid #16A085;
+  transition: border 0.3s ease-in;
+}
+
+/* Dark Mode Styling */
+body.dark-mode {
+  background-color: #121212;
+}
+
+.sidebar.dark-mode {
+  background:linear-gradient(from top,#1C1950,#000);
+  backdrop-filter: blur(40px);
+  border-right: 5px solid rgba(255,255,255,0.4);
+}
+
+.main-content.dark-mode {
+  background:
+  url('https://imgs.search.brave.com/f2EZMaQA3YysP1LYKpNbFtrus4VXhzgxpRO3Xj42Gp4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXZlLmNv/bS93cC93cDY1MTEy/MDkuanBn');
+background-size: cover;
+background-position: center;
+background-attachment: fixed;
+background-repeat: no-repeat;
+transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+/* Style for the Font Size Select Box */
+#fontSize {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  color: #333;
+  appearance: none; /* Removes default styling on browsers */
+  cursor: pointer;
+  outline: none;
+  width: 150px; /* Adjust width to fit content */
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+#fontSize:hover {
+  background-color: #1ABC9C;
+  border-color: #1ABC9C;
+  color:white;
+
+}
+
+/* Focus effect */
+#fontSize:focus {
+  border-color: white; /* Highlight color on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Style for the dropdown arrow */
+#fontSize::after {
+  content: '▼';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Arrow won't interfere with selection */
+}
+
+/* Option styles */
+#fontSize option {
+  font-size: 14px;
+  padding: 8px;
+}
+
+/* Option hover */
+#fontSize option:hover {
+  background-color: #ddd;
+  color: #000;
+}
+/* Style for the Font Color Picker */
+#fontColor {
+  appearance: none; /* Remove default styling */
+  width: 40px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: transparent; /* Transparent to allow custom background */
+  padding: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for a clean look */
+}
+
+/* Add a custom background circle for the color preview */
+#fontColor::-webkit-color-swatch {
+  border-radius: 50%; /* Make the color preview circular */
+  border: none;
+  padding: 0;
+}
+
+#fontColor::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+/* Hover effect */
+#fontColor:hover {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4); /* Increase shadow on hover */
+}
+
+/* Focus effect */
+#fontColor:focus {
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Blue glow on focus */
+}
